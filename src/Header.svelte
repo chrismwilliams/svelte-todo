@@ -8,7 +8,6 @@
 
   async function logout() {
     Auth.signOut();
-    setUser(null);
   }
 </script>
 
