@@ -13,12 +13,8 @@
     login(username, password);
   }
 
-  async function login(username, password) {
-    const credentials = await Auth.signInWithEmailAndPassword(
-      username,
-      password
-    );
-    setUser(credentials.user);
+  function login(username, password) {
+    Auth.signInWithEmailAndPassword(username, password);
   }
 </script>
 
