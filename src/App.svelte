@@ -54,7 +54,7 @@
 <Header {user} />
 <main class="content">
   {#if user}
-    <h1>My Todos</h1>
+    <h1 class="title has-text-centered">My Todos</h1>
     <img src="./assets/svelte.png" alt="" />
     {#each todos as todo}
       <Todo {...todo} />

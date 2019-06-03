@@ -12,19 +12,24 @@
 </script>
 
 <style>
-
+  button {
+    margin-bottom: 0;
+    border: 0;
+  }
 </style>
 
 <header>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <p class="navbar-item">Svelte todo app</p>
+      <p class="navbar-item has-text-weight-semibold">Svelte To-Do App</p>
     </div>
     <div class="navbar-menu">
       <div class="navbar-start" />
       <div class="nav-bar-end">
         {#if user}
-          <button on:click={logout} class="button navbar-item">Log out</button>
+          <div class="navbar-item">
+            <button on:click={logout} class="button">Log out</button>
+          </div>
         {/if}
       </div>
     </div>
