@@ -21,11 +21,15 @@
   import { Auth } from "./firebase";
   import { Firestore } from "./firebase";
 
-  onMount(async () => {
-    user = await Auth.currentUser;
-    if (user) {
-      getTodos();
-    }
+  onMount(() => {
+    Auth.onAuthStateChanged(fbUser => {
+      if (fbUser) {
+        user = fbUser;
+        getTodos();
+      } else {
+        user = null;
+      }
+    });
   });
 
   function getTodos() {
