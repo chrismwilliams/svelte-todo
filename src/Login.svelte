@@ -1,8 +1,5 @@
 <script>
-  import { getContext } from "svelte";
   import { Auth } from "./firebase";
-
-  const { setUser } = getContext("user");
 
   function handler(e) {
     const username = e.target[0].value;
