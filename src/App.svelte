@@ -25,7 +25,6 @@
 <main class="content">
   {#if $user}
     <h1 class="title has-text-centered">My Todos</h1>
-    <!-- <img src="./images/svelte.png" alt="svelte logo" /> -->
     <Todos />
   {:else}
     <Login />
