@@ -1,48 +1,18 @@
 <script>
   import Header from "./Header.svelte";
   import Login from "./Login.svelte";
-  import Todo from "./Todo.svelte";
+  import Todos from "./Todos.svelte";
 
-  import { onMount, setContext } from "svelte";
+  import { Auth } from "./firebase";
+  import { authState } from "rxfire/auth";
+  import { setContext } from "svelte";
 
   setContext("user", {
-    getUser: () => user,
-    setUser: newUser => {
-      user = newUser;
-      if (newUser) {
-        getTodos();
-      }
-    }
+    getUser: () => user
   });
 
   let user = null;
-  let todos = [];
-
-  import { Auth } from "./firebase";
-  import { Firestore } from "./firebase";
-
-  onMount(() => {
-    Auth.onAuthStateChanged(fbUser => {
-      if (fbUser) {
-        user = fbUser;
-        getTodos();
-      } else {
-        user = null;
-      }
-    });
-  });
-
-  function getTodos() {
-    const ref = Firestore.collection("todos");
-
-    ref.onSnapshot(snapshot => {
-      console.log(snapshot);
-      todos = snapshot.docs.map(doc => {
-        return { ...doc.data(), id: doc.id };
-      });
-      console.log(todos);
-    });
-  }
+  const unsubscribe = authState(Auth).subscribe(u => (user = u));
 </script>
 
 <style>
@@ -51,15 +21,18 @@
   }
 </style>
 
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+</svelte:head>
+
 <Header {user} />
 <main class="content">
   {#if user}
     <h1 class="title has-text-centered">My Todos</h1>
     <img src="./assets/svelte.png" alt="" />
-    {#each todos as todo}
-      <Todo {...todo} />
-      <hr />
-    {/each}
+    <Todos />
   {:else}
     <Login />
   {/if}
