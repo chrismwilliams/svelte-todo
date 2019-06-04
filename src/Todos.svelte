@@ -17,6 +17,20 @@
       console.log(todos);
     });
   });
+
+  function deleteTodo(event) {
+    const { id } = event.detail;
+    Firestore.collection("todos")
+      .doc(id)
+      .delete();
+  }
+
+  function toggleTodo(event) {
+    const { id, complete } = event.detail;
+    Firestore.collection("todos")
+      .doc(id)
+      .update({ complete });
+  }
 </script>
 
 <style>
@@ -24,6 +38,6 @@
 </style>
 
 {#each todos as todo}
-  <TodoItem {...todo} />
+  <TodoItem {...todo} on:delete={deleteTodo} on:toggle={toggleTodo} />
   <hr />
 {/each}
