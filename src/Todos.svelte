@@ -12,21 +12,17 @@
   function addTodo(event) {
     const { task } = event.detail;
     //add to db
-    Firestore.collection("todos").add({ name: task, complete: false });
+    query.add({ name: task, complete: false });
   }
 
   function deleteTodo(event) {
     const { id } = event.detail;
-    Firestore.collection("todos")
-      .doc(id)
-      .delete();
+    query.doc(id).delete();
   }
 
   function toggleTodo(event) {
     const { id, complete } = event.detail;
-    Firestore.collection("todos")
-      .doc(id)
-      .update({ complete });
+    query.doc(id).update({ complete });
   }
 </script>
 
