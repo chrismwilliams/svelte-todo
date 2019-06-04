@@ -5,11 +5,6 @@
 
   import { Auth } from "./firebase";
   import { authState } from "rxfire/auth";
-  import { setContext } from "svelte";
-
-  setContext("user", {
-    getUser: () => user
-  });
 
   let user = authState(Auth);
 </script>
