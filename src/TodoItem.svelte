@@ -1,19 +1,22 @@
 <script>
   export let id;
   export let name;
-  export let description;
   export let complete;
 
-  import { Firestore } from "./firebase";
+  import { createEventDispatcher } from "svelte";
+  import { fade, fly } from "svelte/transition";
 
-  function toggleHandler() {
-    const ref = Firestore.doc(`todos/${id}`);
-    ref.update({ complete: !complete });
+  const dispatch = createEventDispatcher();
+
+  function toggle() {
+    dispatch("toggle", {
+      id,
+      complete: !complete
+    });
   }
 
-  function deleteHandler() {
-    const ref = Firestore.doc(`todos/${id}`);
-    ref.delete();
+  function remove() {
+    dispatch("delete", { id });
   }
 </script>
 
@@ -25,10 +28,9 @@
 </style>
 
 <h3 class:complete>{name}</h3>
-<p>{description}</p>
 
-<button on:click={toggleHandler} class="button">
+<button on:click={toggle} class="button">
   Mark {complete ? 'Incomplete' : 'Complete'}
 </button>
 
-<button on:click={deleteHandler} class="button">Delete</button>
+<button on:click={remove} class="button">Delete</button>
