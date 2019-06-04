@@ -1,5 +1,6 @@
 <script>
   import TodoItem from "./TodoItem.svelte";
+  import AddTodo from "./AddTodo.svelte";
 
   import { onMount } from "svelte";
   import { Firestore } from "./firebase";
@@ -10,13 +11,17 @@
     const ref = Firestore.collection("todos");
 
     ref.onSnapshot(snapshot => {
-      console.log(snapshot);
       todos = snapshot.docs.map(doc => {
         return { ...doc.data(), id: doc.id };
       });
-      console.log(todos);
     });
   });
+
+  function addTodo(event) {
+    const { task } = event.detail;
+    //add to db
+    Firestore.collection("todos").add({ name: task, complete: false });
+  }
 
   function deleteTodo(event) {
     const { id } = event.detail;
@@ -37,7 +42,10 @@
 
 </style>
 
-{#each todos as todo}
-  <TodoItem {...todo} on:delete={deleteTodo} on:toggle={toggleTodo} />
-  <hr />
-{/each}
+<ul class="container">
+  {#each todos as todo}
+    <TodoItem {...todo} on:delete={deleteTodo} on:toggle={toggleTodo} />
+  {/each}
+</ul>
+<hr />
+<AddTodo on:add={addTodo} />
