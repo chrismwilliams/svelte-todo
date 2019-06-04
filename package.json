@@ -23,7 +23,8 @@
     "svelte": "^3.4.4"
   },
   "dependencies": {
-    "dotenv": "^8.0.0",
-    "firebase": "^6.1.0"
+    "firebase": "^6.1.0",
+    "rxfire": "^3.5.0",
+    "rxjs": "^6.5.2"
   }
 }
