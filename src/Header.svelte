@@ -4,8 +4,6 @@
   import { getContext } from "svelte";
   import { Auth } from "./firebase";
 
-  const { setUser } = getContext("user");
-
   async function logout() {
     Auth.signOut();
   }
@@ -21,7 +19,7 @@
 <header class="hero is-primary is-bold">
   <div class="hero-body level">
     <h1 class="title is-2">Svelte To-Do App</h1>
-    {#if user}
+    {#if $user}
       <button on:click={logout} class="button">Log out</button>
     {/if}
   </div>
