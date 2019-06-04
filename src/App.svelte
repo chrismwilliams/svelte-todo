@@ -11,8 +11,7 @@
     getUser: () => user
   });
 
-  let user = null;
-  const unsubscribe = authState(Auth).subscribe(u => (user = u));
+  let user = authState(Auth);
 </script>
 
 <style>
@@ -29,9 +28,9 @@
 
 <Header {user} />
 <main class="content">
-  {#if user}
+  {#if $user}
     <h1 class="title has-text-centered">My Todos</h1>
-    <img src="./assets/svelte.png" alt="" />
+    <!-- <img src="./images/svelte.png" alt="svelte logo" /> -->
     <Todos />
   {:else}
     <Login />

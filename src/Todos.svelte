@@ -2,20 +2,12 @@
   import TodoItem from "./TodoItem.svelte";
   import AddTodo from "./AddTodo.svelte";
 
-  import { onMount } from "svelte";
   import { Firestore } from "./firebase";
+  import { collectionData } from "rxfire/firestore";
+  import { startWith } from "rxjs/operators";
 
-  let todos = [];
-
-  onMount(() => {
-    const ref = Firestore.collection("todos");
-
-    ref.onSnapshot(snapshot => {
-      todos = snapshot.docs.map(doc => {
-        return { ...doc.data(), id: doc.id };
-      });
-    });
-  });
+  const query = Firestore.collection("todos");
+  const todos = collectionData(query, "id").pipe(startWith([]));
 
   function addTodo(event) {
     const { task } = event.detail;
@@ -43,7 +35,7 @@
 </style>
 
 <ul class="container">
-  {#each todos as todo}
+  {#each $todos as todo}
     <TodoItem {...todo} on:delete={deleteTodo} on:toggle={toggleTodo} />
   {/each}
 </ul>
