@@ -23,14 +23,28 @@
 <style>
   .complete {
     text-decoration: line-through;
-    color: crimson;
+    color: turquoise;
+  }
+  .box {
+    display: flex;
+    align-items: center;
+  }
+  .toggle {
+    border: 0;
+    background-color: transparent;
+  }
+  p {
+    margin: 0 !important;
+    padding: 0 2rem;
+  }
+  .delete {
+    margin-left: auto;
   }
 </style>
 
-<h3 class:complete>{name}</h3>
+<li class="box" in:fly={{ x: 900, duration: 500 }} out:fade>
+  <button on:click={toggle} class="toggle"> {complete ? '❌' : '✅'} </button>
+  <p class:complete class="is-size-4 has-text-weight-semibold ">{name}</p>
 
-<button on:click={toggle} class="button">
-  Mark {complete ? 'Incomplete' : 'Complete'}
-</button>
-
-<button on:click={remove} class="button">Delete</button>
+  <button on:click={remove} class="delete">🗑</button>
+</li>
