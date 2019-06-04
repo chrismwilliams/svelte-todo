@@ -1,6 +1,7 @@
 <script>
   export let id;
   export let name;
+  export let created;
   export let complete;
 
   import { createEventDispatcher } from "svelte";
