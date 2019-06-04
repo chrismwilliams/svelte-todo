@@ -7,12 +7,14 @@
   import { startWith } from "rxjs/operators";
 
   const query = Firestore.collection("todos");
-  const todos = collectionData(query, "id").pipe(startWith([]));
+  const todos = collectionData(query.orderBy("created"), "id").pipe(
+    startWith([])
+  );
 
   function addTodo(event) {
     const { task } = event.detail;
     //add to db
-    query.add({ name: task, complete: false });
+    query.add({ name: task, complete: false, created: Date.now() });
   }
 
   function deleteTodo(event) {
