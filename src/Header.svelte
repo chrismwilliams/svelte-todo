@@ -18,20 +18,11 @@
   }
 </style>
 
-<header>
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <p class="navbar-item has-text-weight-semibold">Svelte To-Do App</p>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-start" />
-      <div class="nav-bar-end">
-        {#if user}
-          <div class="navbar-item">
-            <button on:click={logout} class="button">Log out</button>
-          </div>
-        {/if}
-      </div>
-    </div>
-  </nav>
+<header class="hero is-primary is-bold">
+  <div class="hero-body level">
+    <h1 class="title is-2">Svelte To-Do App</h1>
+    {#if user}
+      <button on:click={logout} class="button">Log out</button>
+    {/if}
+  </div>
 </header>
