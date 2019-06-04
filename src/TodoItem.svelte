@@ -32,6 +32,7 @@
   .toggle {
     border: 0;
     background-color: transparent;
+    cursor: pointer;
   }
   p {
     margin: 0 !important;
@@ -39,12 +40,16 @@
   }
   .delete {
     margin-left: auto;
+    background-color: lightcoral;
+  }
+  .delete:hover {
+    background-color: crimson;
   }
 </style>
 
 <li class="box" in:fly={{ x: 900, duration: 500 }} out:fade>
   <button on:click={toggle} class="toggle"> {complete ? '❌' : '✅'} </button>
-  <p class:complete class="is-size-4 has-text-weight-semibold ">{name}</p>
+  <p class:complete class="is-size-5 has-text-weight-semibold ">{name}</p>
 
   <button on:click={remove} class="delete">🗑</button>
 </li>
