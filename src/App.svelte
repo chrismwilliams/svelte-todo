@@ -2,6 +2,7 @@
   import Header from "./Header.svelte";
   import Login from "./Login.svelte";
   import Todos from "./Todos.svelte";
+  import Footer from "./Footer.svelte";
 
   import { Auth } from "./firebase";
   import { authState } from "rxfire/auth";
@@ -30,3 +31,4 @@
     <Login />
   {/if}
 </main>
+<Footer />

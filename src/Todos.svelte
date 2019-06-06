@@ -29,7 +29,9 @@
 </script>
 
 <style>
-
+  ul.container {
+    margin-left: 0;
+  }
 </style>
 
 <ul class="container">

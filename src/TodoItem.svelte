@@ -24,7 +24,7 @@
 <style>
   .complete {
     text-decoration: line-through;
-    color: turquoise;
+    color: lightgrey;
   }
   .box {
     display: flex;
@@ -32,6 +32,7 @@
   }
   .toggle {
     border: 0;
+    padding: 0;
     background-color: transparent;
     cursor: pointer;
   }
@@ -49,7 +50,9 @@
 </style>
 
 <li class="box" in:fly={{ x: 900, duration: 500 }} out:fade>
-  <button on:click={toggle} class="toggle"> {complete ? '❌' : '✅'} </button>
+  <button on:click={toggle} class="toggle is-size-5">
+     {complete ? '❌' : '✅'}
+  </button>
   <p class:complete class="is-size-5 has-text-weight-semibold ">{name}</p>
 
   <button on:click={remove} class="delete">🗑</button>

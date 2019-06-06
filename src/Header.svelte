@@ -31,6 +31,8 @@
     </h1>
     {#if $user}
       <button on:click={logout} class="button">Log out</button>
+    {:else}
+      <span />
     {/if}
   </div>
 </header>
