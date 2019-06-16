@@ -1,9 +1,8 @@
 {
   "name": "svelte-todo",
   "version": "1.0.0",
-  "private": true,
   "repository": "https://github.com/chrismwilliams/svelte-todo.git",
-  "author": "Chris Williams <christophw+github@protonmail.com>",
+  "author": "Chris Williams <me@chriswilliams.com>",
   "scripts": {
     "build": "rollup -c",
     "autobuild": "rollup -c -w",

@@ -2,7 +2,7 @@
   import TodoItem from "./TodoItem.svelte";
   import AddTodo from "./AddTodo.svelte";
 
-  import { Firestore } from "./firebase";
+  import { Firestore } from "../firebase";
   import { collectionData } from "rxfire/firestore";
   import { startWith } from "rxjs/operators";
 

@@ -2,7 +2,7 @@
   export let user;
 
   import { getContext } from "svelte";
-  import { Auth } from "./firebase";
+  import { Auth } from "../firebase";
 
   async function logout() {
     Auth.signOut();

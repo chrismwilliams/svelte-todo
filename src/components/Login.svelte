@@ -1,5 +1,5 @@
 <script>
-  import { Auth } from "./firebase";
+  import { Auth } from "../firebase";
 
   function handler(e) {
     const username = e.target[0].value;
