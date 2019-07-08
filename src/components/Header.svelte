@@ -1,7 +1,6 @@
 <script>
   export let user;
 
-  import { getContext } from "svelte";
   import { Auth } from "../firebase";
 
   async function logout() {

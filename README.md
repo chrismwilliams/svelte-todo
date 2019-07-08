@@ -3,8 +3,9 @@
 Add your own firebase settings in `src/firebase.js`
 
 ## Firebase cloud db
-| Collection | Document | Fields |
-| - | - | - |
-| Todos | uid | complete |
-| # | # | name |
-| # | # | created |
+
+| Collection | Document | Fields   |
+| ---------- | -------- | -------- |
+| todos      | uid      | complete |
+| #          | #        | name     |
+| #          | #        | created  |
