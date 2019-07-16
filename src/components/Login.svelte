@@ -2,9 +2,8 @@
   import { Auth } from "../firebase";
 
   function handler(e) {
-    const username = e.target[0].value;
-    const password = e.target[1].value;
-    if (!username || username == "" || !password || password == "") {
+    const [{ value: username }, { value: password }] = e.target;
+    if (!username || username === "" || !password || password === "") {
       return;
     }
     login(username, password);
@@ -14,10 +13,6 @@
     Auth.signInWithEmailAndPassword(username, password);
   }
 </script>
-
-<style>
-
-</style>
 
 <div class="section">
   <div class="column">

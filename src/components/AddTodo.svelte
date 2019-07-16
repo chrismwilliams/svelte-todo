@@ -5,7 +5,7 @@
   let task = "";
 
   function addTodo() {
-    if (!task || task == "") return;
+    if (!task || task === "") return;
     dispatch("add", {
       task
     });
